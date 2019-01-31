@@ -1,0 +1,18 @@
+<nav class="navbar navbar-dark bg-primary ">
+  <a class="navbar-brand" href="/">Angular 6 & Bootstrap</a>
+  <div class="navbar-expand mr-auto">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="#" >Home</a>
+      <a class="nav-item nav-link" routerLink="Login" *ngIf="!authService.isLoggedIn()">Login</a>
+      <a class="nav-item nav-link" routerLink="Register" *ngIf="!authService.isLoggedIn()">Register</a>
+      <a class="nav-item nav-link" routerLink="User" *ngIf="authService.isLoggedIn()">Users</a>
+    </div>
+  </div>
+  <div class="navbar-expand ml-auto navbar-nav">
+    <div class="navbar-nav">
+   
+      <a *ngIf="authService.isLoggedIn()"><strong style = "color: white;vertical-align: middle;">{{authService.CurrentUser.firstname | titlecase}}</strong></a> &nbsp;&nbsp;&nbsp;&nbsp;
+      <a *ngIf="authService.isLoggedIn()" (click)="authService.logout()" routerLink='/Login' class="btn btn-info" ><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+    </div>
+  </div>
+</nav>
